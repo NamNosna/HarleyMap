@@ -4,10 +4,28 @@
 <title>Testing Website</title>
 </head>
 <body>
+<script>
+    function changingLetters()
+        {
+            if(document.getElementById('button1').getAttribute("title") == "1")
+            {
+                document.getElementById("buttonTesting").innerHTML = "TESTING CHANGED";
+                document.getElementById("button1").setAttribute('title',"2")
+            }
+            else
+            {
+                document.getElementById("buttonTesting").innerHTML = "Changes reverted: How about this time with some buttons";
+                document.getElementById("button1").setAttribute('title',"1")
+            }
+        }
+</script>
 
 <h1>Testing Website</h1>
 <p>Testing, testing, testing. beep beep boop</p>
 <p>Let me do some testing of pushing</p>
+<p id="buttonTesting">How about this time with some buttons</p>
+<button type = "button" title = "1" id = "button1" onclick="changingLetters()"> Click me </button>
+
 
 
 </body>
