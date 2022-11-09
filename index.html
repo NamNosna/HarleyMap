@@ -6,18 +6,35 @@
 <body>
 <script>
     function changingLetters()
+    {
+        if(document.getElementById('button1').getAttribute("title") == "1")
         {
-            if(document.getElementById('button1').getAttribute("title") == "1")
-            {
-                document.getElementById("buttonTesting").innerHTML = "TESTING CHANGED";
-                document.getElementById("button1").setAttribute('title',"2")
-            }
-            else
-            {
-                document.getElementById("buttonTesting").innerHTML = "Changes reverted: How about this time with some buttons";
-                document.getElementById("button1").setAttribute('title',"1")
-            }
+            document.getElementById("buttonTesting").innerHTML = "TESTING CHANGED";
+            document.getElementById("button1").setAttribute('title',"2")
         }
+        else
+        {
+            document.getElementById("buttonTesting").innerHTML = "Changes reverted: How about this time with some buttons";
+            document.getElementById("button1").setAttribute('title',"1")
+        }
+    }
+    function changeCapitalization()
+    {
+        let theString = document.getElementById("textbox1").value
+        let tempString, output = {}
+        for(i = 0; i < theString.length; i++)
+        {
+            if(i % 2 == 0)
+            {
+                tempString = theString.charAt(i).toUpperCase()
+            }
+            else{
+                tempString = theString.charAt(i).toLowerCase()
+            }
+            output = output + tempString
+        }
+        document.getElementById("switchedText").innerHTML = output
+    }   
 </script>
 
 <h1>Testing Website</h1>
@@ -26,7 +43,9 @@
 <p id="buttonTesting">How about this time with some buttons</p>
 <button type = "button" title = "1" id = "button1" onclick="changingLetters()"> Click me </button>
 
-
+<label for = "textbox1"> Try to enter something and it would switch format </label>
+<input type = "text" id = "textbox1" value = "Enter Something Here" onblur="changeCapitalization()">
+<p id="switchedText">  </p>
 
 </body>
 </html>
