@@ -40,12 +40,28 @@
         document.getElementById(divId).classList.toggle("hide")
     }
 
+    function canvasinitiator()
+    {
+        document.getElementById("mouseTrackingPad").addEventListener("mousemove", function() {mousePosition("mouseTrackingPad")})
+        document.getElementById("mouseTrackingPad").addEventListener("mouseleave", function() {deleteText("mouseTrackingPad")})
+    }
+
+    function deleteText(x)
+    {
+        document.getElementById(x).innerHTML = ""
+    }
     function mousePosition(canId)
     {
-        document.getElementById(canId)
-        let bound = canvas.getBoundingClientRect();
-        let x = event.clientX - bound.left - canvas.clientLeft;
-        let y = event.clientY - bound.top - canvas.clientTop;
+        let canva = document.getElementById(canId)
+        document.getElementById("mousePositionText").innerHTML =2
+        let bound = canva.getBoundingClientRect()
+        document.getElementById("mousePositionText").innerHTML =3
+        
+        let x = event.clientX - bound.left;
+        let y = event.clientY - bound.top;
+
+        let str = "coordinate = (" + Math.round(x) + "," + Math.round(y) + ")" 
+        document.getElementById("mousePositionText").innerHTML = str
     }
 </script>
 <style>
@@ -63,7 +79,7 @@
 
 <div id = "hidable" class = "regular">
 <label for = "textbox1"> Try to enter something and it would switch format </label>
-<input type = "text" id = "textbox1" value = "Enter Something Here" onblur="changeCapitalization()">
+<input type = "text" id = "textbox1" value = "Enter Something Here" onblur ="changeCapitalization()">
 <p id="switchedText">  </p>
 </div>
 
@@ -71,7 +87,8 @@
 
 <p id="checkprogress"> </p>
 
-<canvas id="mouseTrackingPad" width="300" height="200" style = "border: 1px solid #95b274;" onmouseenter="mousePosition(this)"> </canvas>
+<p> Try to move your mouse within the canvas</p>
+<canvas id="mouseTrackingPad" width="300" height="200" style = "border: 1px solid #95b274;" onmouseenter = "canvasinitiator()"> </canvas>
 <p id="mousePositionText"> </p>
 
 
