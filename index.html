@@ -10,18 +10,18 @@
         if(document.getElementById('button1').getAttribute("title") == "1")
         {
             document.getElementById("buttonTesting").innerHTML = "TESTING CHANGED";
-            document.getElementById("button1").setAttribute('title',"2")
+            document.getElementById("button1").setAttribute('title',"2");
         }
         else
         {
             document.getElementById("buttonTesting").innerHTML = "Changes reverted: How about this time with some buttons";
-            document.getElementById("button1").setAttribute('title',"1")
+            document.getElementById("button1").setAttribute('title',"1");
         }
     }
     function changeCapitalization()
     {
-        let theString = document.getElementById("textbox1").value
-        let tempString = "", output = ""
+        let theString = document.getElementById("textbox1").value;
+        let tempString = "", output = "";
         for(i = 0; i < theString.length; i++)
         {
             if(i % 2 == 0)
@@ -35,7 +35,25 @@
         }
         document.getElementById("switchedText").innerHTML = output
     }   
+    function hideDivision(divId)
+    {
+        document.getElementById(divId).classList.toggle("hide")
+    }
+
+    function mousePosition(canId)
+    {
+        document.getElementById(canId)
+        let bound = canvas.getBoundingClientRect();
+        let x = event.clientX - bound.left - canvas.clientLeft;
+        let y = event.clientY - bound.top - canvas.clientTop;
+    }
 </script>
+<style>
+    .hide
+    {
+        display:none;
+    }
+</style>
 
 <h1>Testing Website</h1>
 <p>Testing, testing, testing. beep beep boop</p>
@@ -43,9 +61,19 @@
 <p id="buttonTesting">How about this time with some buttons</p>
 <button type = "button" title = "1" id = "button1" onclick="changingLetters()"> Click me </button>
 
+<div id = "hidable" class = "regular">
 <label for = "textbox1"> Try to enter something and it would switch format </label>
 <input type = "text" id = "textbox1" value = "Enter Something Here" onblur="changeCapitalization()">
 <p id="switchedText">  </p>
+</div>
+
+<button type="button" id = "hideButton" onclick = "hideDivision('hidable')"> Click to Hide </button>
+
+<p id="checkprogress"> </p>
+
+<canvas id="mouseTrackingPad" width="300" height="200" style = "border: 1px solid #95b274;" onmouseenter="mousePosition(this)"> </canvas>
+<p id="mousePositionText"> </p>
+
 
 </body>
 </html>
