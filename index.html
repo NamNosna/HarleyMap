@@ -1,96 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Testing Website</title>
-</head>
-<body>
-<script>
-    function changingLetters()
-    {
-        if(document.getElementById('button1').getAttribute("title") == "1")
-        {
-            document.getElementById("buttonTesting").innerHTML = "TESTING CHANGED";
-            document.getElementById("button1").setAttribute('title',"2");
-        }
-        else
-        {
-            document.getElementById("buttonTesting").innerHTML = "Changes reverted: How about this time with some buttons";
-            document.getElementById("button1").setAttribute('title',"1");
-        }
-    }
-    function changeCapitalization()
-    {
-        let theString = document.getElementById("textbox1").value;
-        let tempString = "", output = "";
-        for(i = 0; i < theString.length; i++)
-        {
-            if(i % 2 == 0)
-            {
-                tempString = theString.charAt(i).toUpperCase()
-            }
-            else{
-                tempString = theString.charAt(i).toLowerCase()
-            }
-            output = output + tempString
-        }
-        document.getElementById("switchedText").innerHTML = output
-    }   
-    function hideDivision(divId)
-    {
-        document.getElementById(divId).classList.toggle("hide")
-    }
+<script src = "JavaScript_data\New Text Document.JS">
 
-    function canvasinitiator()
-    {
-        document.getElementById("mouseTrackingPad").addEventListener("mousemove", function() {mousePosition("mouseTrackingPad")})
-        document.getElementById("mouseTrackingPad").addEventListener("mouseleave", function() {deleteText("mousePositionText")})
-    }
-
-    function deleteText(x)
-    {
-        document.getElementById(x).innerHTML = ""
-    }
-    function mousePosition(canId)
-    {
-        let canva = document.getElementById(canId)
-        document.getElementById("mousePositionText").innerHTML =2
-        let bound = canva.getBoundingClientRect()
-        document.getElementById("mousePositionText").innerHTML =3
-        
-        let x = event.clientX - bound.left;
-        let y = event.clientY - bound.top;
-
-        let str = "coordinate = (" + Math.round(x) + "," + Math.round(y) + ")" 
-        document.getElementById("mousePositionText").innerHTML = str
-    }
 </script>
 <style>
-    .hide
-    {
-        display:none;
+    .hide {
+        display: none;
+    }
+
+    .show {
+        display: flex;
     }
 </style>
 
-<h1>Testing Website</h1>
-<p>Testing, testing, testing. beep beep boop</p>
-<p>Let me do some testing of pushing</p>
-<p id="buttonTesting">How about this time with some buttons</p>
-<button type = "button" title = "1" id = "button1" onclick="changingLetters()"> Click me </button>
+<head>
+    <title> Harley Map </title>
+    <h1> Anson's Capstone Project: Map of The Harley School </h1>
+</head>
 
-<div id = "hidable" class = "regular">
-<label for = "textbox1"> Try to enter something and it would switch format </label>
-<input type = "text" id = "textbox1" value = "Enter Something Here" onblur ="changeCapitalization()">
-<p id="switchedText">  </p>
-</div>
+<body>
 
-<button type="button" id = "hideButton" onclick = "hideDivision('hidable')"> Click to Hide </button>
+    <p> Introduction </p>
+    <button type="button" data-divId="introduction" data-toggleStatus="hide" data-showName="introduction of the project"
+        onclick="toggleHidingSection(this)">show introduction of the project</button>
+    <div id="introduction" class="hide">
+        <embed src="introduction.txt">
+    </div>
 
-<p id="checkprogress"> </p>
-
-<p> Try to move your mouse within the canvas</p>
-<canvas id="mouseTrackingPad" width="300" height="200" style = "border: 1px solid #95b274;" onmouseenter = "canvasinitiator()"> </canvas>
-<p id="mousePositionText"> </p>
-
+    <p> Project Log </p>
+    <button type="button" data-divId="log" data-toggleStatus="hide" data-showName="project log"
+        onclick="toggleHidingSection(this)">show project log</button>
+    <div id="log" class="hide">
+        <p> This is the log of my progress in this project, where I listed the steps that leads to the completion of
+            this project <br><br>
+            The idea of this project is suggested by Dr.Dobson. As a relatively new teacher in the Harley School, he
+            realized that one of the difficulty for those new to Harley is recognizing the different names/symbols of a
+            room, as one room can be refered to in different names including a conbination of letters and numbers <br><br>
+            Therefore, we decided to make an interactive map, where its primary function is to represent and
+            visualize Harley in a Google map, and a location can be searched and located with various different tags,
+            including associated displine, teacher, function, etc.<br><br>
+            To develop a map embedded in a website, a level of understanding of the three website developing languages
+            (HTML, CSS and JavaScript) is neccessary. I started to learn and progress through the three language with
+            W3Schools and making an simple Testing site. </p>
+    </div>
 
 </body>
+
 </html>
