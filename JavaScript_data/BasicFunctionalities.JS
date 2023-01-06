@@ -10,3 +10,10 @@ function toggleHidingSection(button) {
         button.innerHTML = "Show " + button.getAttribute("data-showName")
     }
 }
+let classrooms = {};
+function assigningclass(Roomid) {
+    classrooms[Roomid] = new Classroom(Roomid)
+}
+function modifyingclass(Roomid) {
+    classroom[Roomid].addProperty(propertyName, value)
+}

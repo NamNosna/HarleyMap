@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<script src = "JavaScript_data\New Text Document.JS">
+<script src = "JavaScript_data\BasicFunctionalities.JS"></script>
+<script src = "JavaScript_data\Classrooms.JS"></script>
 
-</script>
 <style>
     .hide {
         display: none;
@@ -43,6 +43,12 @@
             (HTML, CSS and JavaScript) is neccessary. I started to learn and progress through the three language with
             W3Schools and making an simple Testing site. </p>
     </div>
+
+    <div id="testing">
+        <label for="classroomid">Search For Room: try "JAM's Room"</label><br>
+        <input type = "text" id="classroomid" onblur = "getClassroomInfo(this.value)"> 
+        <p id="searchResult"> </p>
+    </div>   
 
 </body>
 
